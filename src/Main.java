@@ -1,15 +1,43 @@
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Scanner;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
+public class Main {
+    HashMap<String, ArrayList<String>> menu = new HashMap<>();
+    Scanner scanner = new Scanner(System.in);
+    public static void main(String[] args) {
+        Main main = new Main();
+        main.screen();// Создаем экземпляр класса Main
+    }
+
+    public void screen(){
+        while (true) {
+            System.out.println("Вы попали в меню криэйтор");
+            System.out.println("Если хотите создать меню, нажмите 1");
+            System.out.println("Если хотите закрыть криэйтор, нажмите 2");
+
+            String command = scanner.nextLine();
+            switch (command) {
+                case "1":
+                    createMenu();
+                    break;
+                case "2":
+                    return;
+
+            }
+
         }
     }
+    public void createMenu() {
+        System.out.println("Добро пожаловать в программу подбора меню на 1600 ккал");
+    System.out.println("Введи его тип блюда");
+    String dishType = scanner.nextLine();
+    System.out.println("Введи его название блюда");
+    String dishName = scanner.nextLine();
+        if (!menu.containsKey(dishType)) {
+            menu.put(dishType, new ArrayList<>());
+        }
+        menu.get(dishType).add(dishName);
+            System.out.println(menu);}
+
 }
